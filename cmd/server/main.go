@@ -1,7 +1,7 @@
 package main
 
-import "fmt"
+import "github.com/nguyen-quang-phu/go-ecommerce-backend-api/internal/initializes"
 
 func main() {
-	fmt.Println("Starting")
+	initializes.Run()
 }
