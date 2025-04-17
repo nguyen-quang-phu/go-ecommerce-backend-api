@@ -6,13 +6,19 @@ mysql:
   username: root
   password: root1234
   dbname: shopdevgo
-  maxIdleConns: 10
-  maxOpenConns: 100
-  connMaxLifetime: 3600
-log:
-  logLevel: debug
-  fileName: "./storages/logs/dev.001.log"
-  maxSize: 500 # megabytes
-  maxBackups: 3
-  maxAge: 28 # days
+  max_idle_conns: 10
+  max_open_conns: 100
+  conn_max_lifetime: 3600
+logger:
+  log_level: debug
+  file_name: "./storages/logs/dev.001.log"
+  max_size: 500 # megabytes
+  max_backups: 3
+  max_age: 28 # days
   compress: true # disabled by default
+redis:
+  host: 127.0.0.1
+  port: 6379
+  password: ""
+  db: 0
+  pool_size: 10

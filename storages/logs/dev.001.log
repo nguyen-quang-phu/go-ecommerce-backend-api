@@ -1,0 +1,6 @@
+{"level":"INFO","time":"2025-04-17T15:20:01.547+0700","caller":"initializes/mysql.go:44","msg":"initMysql initialization success"}
+{"level":"INFO","time":"2025-04-17T15:20:48.221+0700","caller":"initializes/mysql.go:44","msg":"initMysql initialization success"}
+{"level":"INFO","time":"2025-04-17T16:30:41.117+0700","caller":"initializes/mysql.go:44","msg":"initMysql initialization success"}
+{"level":"INFO","time":"2025-04-17T16:31:09.316+0700","caller":"initializes/mysql.go:44","msg":"initMysql initialization success"}
+{"level":"INFO","time":"2025-04-17T17:02:52.504+0700","caller":"initializes/mysql.go:44","msg":"initMysql initialization success"}
+{"level":"INFO","time":"2025-04-17T17:02:52.522+0700","caller":"initializes/redis.go:45","msg":"value score is::","score":"100"}

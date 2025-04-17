@@ -9,8 +9,13 @@
   env.GREET = "devenv";
 
   # https://devenv.sh/packages/
-  packages = [pkgs.git];
+  packages = with pkgs;[
+    just
+    iredis
+    mycli
+  ];
   services = {
+    redis.enable = true;
     mysql = {
       enable = true;
       initialDatabases = [{name = "shopdevgo";}];
