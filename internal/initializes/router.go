@@ -2,21 +2,38 @@ package initializes
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/nguyen-quang-phu/go-ecommerce-backend-api/global"
 	"github.com/nguyen-quang-phu/go-ecommerce-backend-api/internal/middlewares"
-	"github.com/nguyen-quang-phu/go-ecommerce-backend-api/response"
+	"github.com/nguyen-quang-phu/go-ecommerce-backend-api/internal/router"
 )
 
-func InitRouter() *gin.Engine {
-	r := gin.Default()
-	r.Use(middlewares.AuthenticateMiddleware())
-	v1 := r.Group("/api/v1")
-	{
-		v1.GET("/ping", Pong)
+func setMode() *gin.Engine {
+	if global.Config.Server.Mode == "dev" {
+		gin.SetMode(gin.DebugMode)
+		gin.ForceConsoleColor()
+		return gin.Default()
+	} else {
+		gin.SetMode(gin.ReleaseMode)
+		return gin.New()
 	}
-
-	return r
 }
 
-func Pong(c *gin.Context) {
-	response.SuccessResponse(c, 20001, []string{"pong"})
+func InitRouter() *gin.Engine {
+	r := setMode()
+	r.Use(middlewares.AuthenticateMiddleware())
+	manageRouter := router.RouterGroupApp.Manage
+	userRouter := router.RouterGroupApp.User
+	mainGroup := r.Group("/api/v1")
+	{
+		mainGroup.GET("/checkStatus")
+	}
+	{
+		userRouter.InitUserRouter(mainGroup)
+		userRouter.InitProductRouter(mainGroup)
+	}
+	{
+		manageRouter.InitUserRouter(mainGroup)
+		manageRouter.InitAdminRouter(mainGroup)
+	}
+	return r
 }

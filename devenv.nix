@@ -9,16 +9,20 @@
   env.GREET = "devenv";
 
   # https://devenv.sh/packages/
-  packages = with pkgs;[
-    just
+  packages = with pkgs; [
     iredis
+    just
     mycli
   ];
   services = {
     redis.enable = true;
     mysql = {
       enable = true;
-      initialDatabases = [{name = "shopdevgo";}];
+      initialDatabases = [
+        {
+          name = "shopdevgo";
+        }
+      ];
       ensureUsers = [
         {
           name = "root";
