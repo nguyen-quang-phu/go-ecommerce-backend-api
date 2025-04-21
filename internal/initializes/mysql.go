@@ -47,7 +47,7 @@ func InitDatabase() {
 	global.DB = db
 
 	SetPoll(config)
-	genTableDAO()
+	// genTableDAO()
 }
 
 func SetPoll(config settings.MySQLSetting) {

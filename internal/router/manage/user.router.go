@@ -6,7 +6,7 @@ type UserRouter struct{}
 
 func (pr *UserRouter) InitUserRouter(Router *gin.RouterGroup) {
 // private router
-	userRouterPrivate := Router.Group("/admin/user")
+	userRouterPrivate := Router.Group("/user")
 	{
 		userRouterPrivate.POST("/active")
 	}

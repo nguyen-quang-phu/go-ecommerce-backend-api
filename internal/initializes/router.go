@@ -3,7 +3,6 @@ package initializes
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/nguyen-quang-phu/go-ecommerce-backend-api/global"
-	"github.com/nguyen-quang-phu/go-ecommerce-backend-api/internal/middlewares"
 	"github.com/nguyen-quang-phu/go-ecommerce-backend-api/internal/router"
 )
 
@@ -20,7 +19,6 @@ func setMode() *gin.Engine {
 
 func InitRouter() *gin.Engine {
 	r := setMode()
-	r.Use(middlewares.AuthenticateMiddleware())
 	manageRouter := router.RouterGroupApp.Manage
 	userRouter := router.RouterGroupApp.User
 	mainGroup := r.Group("/api/v1")

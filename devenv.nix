@@ -12,6 +12,8 @@
   packages = with pkgs; [
     iredis
     mycli
+    sqlc
+    goose
   ];
   services = {
     redis.enable = true;

@@ -4,7 +4,7 @@ default:
 alias s := server
 
 server:
-  go run ./cmd/server/
+  air
 
 up:
   devenv up

@@ -8,7 +8,7 @@ type userRepository struct{}
 
 // GetUserByEmail implements IUserRepository.
 func (u userRepository) GetUserByEmail(email string) bool {
-	panic("unimplemented")
+	return false
 }
 
 func NewUserRepository() IUserRepository {
