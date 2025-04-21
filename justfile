@@ -8,3 +8,7 @@ server:
 
 up:
   devenv up
+
+[working-directory: 'internal/wire']
+wire:
+  wire

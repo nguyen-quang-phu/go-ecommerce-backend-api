@@ -22,5 +22,5 @@ func loadConfig() {
 		fmt.Printf("Unable to decode configuration %v", err)
 	}
 
-	fmt.Println("load config",global.Config)
+	fmt.Println("load config", global.Config)
 }

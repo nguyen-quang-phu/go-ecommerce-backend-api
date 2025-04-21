@@ -4,11 +4,13 @@ const (
 	ErrCodeSuccess      = 20001
 	ErrCodeParamInvalid = 20003
 
-	ErrInvalidToken = 30001
+	ErrInvalidToken      = 30001
+	ErrCodeUserHasExists = 50001
 )
 
 var msg = map[int]string{
-	ErrCodeSuccess:      "success",
-	ErrCodeParamInvalid: "Email is invalid",
-	ErrInvalidToken:     "Token is invalid",
+	ErrCodeSuccess:       "success",
+	ErrCodeParamInvalid:  "Email is invalid",
+	ErrInvalidToken:      "Token is invalid",
+	ErrCodeUserHasExists: "User has already registered",
 }

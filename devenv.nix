@@ -11,7 +11,6 @@
   # https://devenv.sh/packages/
   packages = with pkgs; [
     iredis
-    just
     mycli
   ];
   services = {
@@ -44,8 +43,7 @@
   '';
 
   enterShell = ''
-    hello
-    git --version
+    export PATH="$PATH:$(go env GOPATH)/bin"
   '';
 
   # https://devenv.sh/tasks/

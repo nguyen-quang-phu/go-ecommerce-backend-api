@@ -6,5 +6,9 @@ func Run() {
 	InitDatabase()
 	InitRedis()
 	r := InitRouter()
-	r.Run()
+
+	err := r.Run()
+	if err != nil {
+		return
+	}
 }
