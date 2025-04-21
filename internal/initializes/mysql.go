@@ -9,6 +9,7 @@ import (
 	"github.com/nguyen-quang-phu/go-ecommerce-backend-api/pkg/settings"
 	"go.uber.org/zap"
 	"gorm.io/driver/mysql"
+	"gorm.io/gen"
 	"gorm.io/gorm"
 )
 
@@ -46,7 +47,7 @@ func InitDatabase() {
 	global.DB = db
 
 	SetPoll(config)
-	migrateTables()
+	genTableDAO()
 }
 
 func SetPoll(config settings.MySQLSetting) {
@@ -65,4 +66,22 @@ func migrateTables() {
 	if err != nil {
 		fmt.Println("Migrating tables error:", err)
 	}
+}
+
+func genTableDAO() {
+	g := gen.NewGenerator(gen.Config{
+		OutPath: "./internal/model",
+		Mode:    gen.WithoutContext | gen.WithDefaultQuery | gen.WithQueryInterface, // generate mode
+	})
+
+	g.UseDB(global.DB) // reuse your gorm db
+	g.GenerateModel("go_db_users", )
+	// // Generate basic type-safe DAO API for struct `model.User` following conventions
+	// g.ApplyBasic(model.User{})
+	//
+	// // Generate Type Safe API with Dynamic SQL defined on Querier interface for `model.User` and `model.Company`
+	// g.ApplyInterface(func(Querier) {}, model.User{}, model.Company{})
+
+	// Generate the code
+	g.Execute()
 }

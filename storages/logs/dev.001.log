@@ -8,3 +8,12 @@
 {"level":"INFO","time":"2025-04-18T12:17:40.332+0700","caller":"initializes/redis.go:45","msg":"value score is::","score":"100"}
 {"level":"INFO","time":"2025-04-18T12:19:21.952+0700","caller":"initializes/mysql.go:44","msg":"initMysql initialization success"}
 {"level":"INFO","time":"2025-04-18T12:19:21.969+0700","caller":"initializes/redis.go:45","msg":"value score is::","score":"100"}
+{"level":"ERROR","time":"2025-04-21T08:32:00.711+0700","caller":"initializes/mysql.go:32","msg":"initMysql initialization error","error":"dial tcp 127.0.0.1:3306: connect: connection refused","stacktrace":"github.com/nguyen-quang-phu/go-ecommerce-backend-api/internal/initializes.checkErrorPanic\n\t/home/keynold/go/src/github.com/nguyen-quang-phu/go-ecommerce-backend-api/internal/initializes/mysql.go:32\ngithub.com/nguyen-quang-phu/go-ecommerce-backend-api/internal/initializes.InitDatabase\n\t/home/keynold/go/src/github.com/nguyen-quang-phu/go-ecommerce-backend-api/internal/initializes/mysql.go:44\ngithub.com/nguyen-quang-phu/go-ecommerce-backend-api/internal/initializes.Run\n\t/home/keynold/go/src/github.com/nguyen-quang-phu/go-ecommerce-backend-api/internal/initializes/run.go:6\nmain.main\n\t/home/keynold/go/src/github.com/nguyen-quang-phu/go-ecommerce-backend-api/cmd/server/main.go:6\nruntime.main\n\t/nix/store/g29rrn8qqlg4yjqv543ryrkimr7fk43h-go-1.24.1/share/go/src/runtime/proc.go:283"}
+{"level":"INFO","time":"2025-04-21T08:32:27.044+0700","caller":"initializes/mysql.go:45","msg":"initMysql initialization success"}
+{"level":"INFO","time":"2025-04-21T08:34:20.281+0700","caller":"initializes/mysql.go:45","msg":"initMysql initialization success"}
+{"level":"INFO","time":"2025-04-21T08:35:13.287+0700","caller":"initializes/mysql.go:45","msg":"initMysql initialization success"}
+{"level":"INFO","time":"2025-04-21T08:35:13.306+0700","caller":"initializes/redis.go:45","msg":"value score is::","score":"100"}
+{"level":"INFO","time":"2025-04-21T08:36:45.837+0700","caller":"initializes/mysql.go:45","msg":"initMysql initialization success"}
+{"level":"INFO","time":"2025-04-21T08:36:45.854+0700","caller":"initializes/redis.go:45","msg":"value score is::","score":"100"}
+{"level":"INFO","time":"2025-04-21T08:39:12.726+0700","caller":"initializes/mysql.go:45","msg":"initMysql initialization success"}
+{"level":"INFO","time":"2025-04-21T08:39:12.753+0700","caller":"initializes/redis.go:45","msg":"value score is::","score":"100"}
