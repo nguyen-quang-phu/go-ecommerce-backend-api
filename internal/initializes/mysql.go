@@ -1,6 +1,7 @@
 package initializes
 
 import (
+	"database/sql"
 	"fmt"
 	"time"
 
@@ -8,9 +9,7 @@ import (
 	"github.com/nguyen-quang-phu/go-ecommerce-backend-api/internal/po"
 	"github.com/nguyen-quang-phu/go-ecommerce-backend-api/pkg/settings"
 	"go.uber.org/zap"
-	"gorm.io/driver/mysql"
 	"gorm.io/gen"
-	"gorm.io/gorm"
 )
 
 func getDSN(config settings.MySQLSetting) string {
@@ -37,29 +36,26 @@ func checkErrorPanic(err error, errString string) {
 func InitDatabase() {
 	config := global.Config.Mysql
 	dsn := getDSN(config)
-	db, err := gorm.Open(
-		mysql.Open(dsn),
-		&gorm.Config{SkipDefaultTransaction: false},
-	)
+	db, err := sql.Open("mysql", dsn)
 	checkErrorPanic(err, "initMysql initialization error")
 	global.Logger.Info("initMysql initialization success")
 
 	global.DB = db
 
-	SetPoll(config)
+	// SetPoll(config)
 	// genTableDAO()
 }
 
-func SetPoll(config settings.MySQLSetting) {
-	sqlDB, err := global.DB.DB()
-	if err != nil {
-		fmt.Printf("mysql error: %s::", err)
-	}
-
-	sqlDB.SetConnMaxIdleTime(time.Duration(config.MaxIdleConns))
-	sqlDB.SetMaxOpenConns(config.MaxOpenConns)
-	sqlDB.SetConnMaxLifetime(time.Duration(config.ConnMaxLifetime))
-}
+// func SetPoll(config settings.MySQLSetting) {
+// 	sqlDB, err := global.DB
+// 	if err != nil {
+// 		fmt.Printf("mysql error: %s::", err)
+// 	}
+//
+// 	sqlDB.SetConnMaxIdleTime(time.Duration(config.MaxIdleConns))
+// 	sqlDB.SetMaxOpenConns(config.MaxOpenConns)
+// 	sqlDB.SetConnMaxLifetime(time.Duration(config.ConnMaxLifetime))
+// }
 
 func migrateTables() {
 	err := global.DB.AutoMigrate(&po.User{}, &po.Role{})
@@ -75,7 +71,7 @@ func genTableDAO() {
 	})
 
 	g.UseDB(global.DB) // reuse your gorm db
-	g.GenerateModel("go_db_users", )
+	g.GenerateModel("go_db_users")
 	// // Generate basic type-safe DAO API for struct `model.User` following conventions
 	// g.ApplyBasic(model.User{})
 	//

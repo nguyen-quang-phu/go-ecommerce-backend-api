@@ -4,9 +4,22 @@
   config,
   inputs,
   ...
-}: {
+}: let
+  DB_USERNAME = "root";
+  DB_PASSWORD = "root1234";
+  DB_HOST = "localhost";
+  DB_PORT = "3306";
+  DB_NAME = "shopdevgo";
+  GOOSE_MIGRATION_DIR = "sql/schema";
+  GOOSE_DRIVER = "mysql";
+  GOOSE_DBSTRING = "${DB_USERNAME}:${DB_PASSWORD}@tcp(${DB_HOST}:${DB_PORT})/${DB_NAME}";
+in {
   # https://devenv.sh/basics/
-  env.GREET = "devenv";
+  env = {
+    inherit GOOSE_DRIVER;
+    inherit GOOSE_DBSTRING;
+    inherit GOOSE_MIGRATION_DIR;
+  };
 
   # https://devenv.sh/packages/
   packages = with pkgs; [
@@ -14,6 +27,7 @@
     mycli
     sqlc
     goose
+    jinja2-cli
   ];
   services = {
     redis.enable = true;
