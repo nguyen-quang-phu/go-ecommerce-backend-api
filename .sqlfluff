@@ -1,7 +1,12 @@
 [sqlfluff]
-dialect = mysql   # Or "mysql" or "sqlite" depending on your sqlc target
-exclude_rules = L006,L010,L014,L039,L013,L040
+dialect = mysql
+exclude_rules = L006,L009,L010,L014,L039,L013,L040
 templater = placeholder
+output_line_length = 1000
+max_line_length = 1000
 
 [sqlfluff:templater:placeholder]
 param_style = numeric_dollar
+
+[sqlfluff:indentation]
+tab_space_size = 2

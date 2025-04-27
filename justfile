@@ -25,6 +25,8 @@ db_down:
 
 db_reset:
   goose reset
+dbconsole:
+  mycli -uroot -proot1234 shopdevgo
 
 [positional-arguments]
 create_migration name:
